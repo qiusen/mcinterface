@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dihaitech.tserver.dao.IMemberDAO">
+	
+	<cache flushInterval="600000" eviction="LRU" type="org.mybatis.caches.oscache.OSCache"/>
+	
+	<sql id="memberLikeWhere">
+		<where>
+            <if test ="id != null and id > -1">
+				and `ID` = #{id}
+			</if>
+	        <if test ="username != null and username != ''">
+			    and `USERNAME` like '%${username}%'
+		    </if>
+	        <if test ="passwd != null and passwd != ''">
+			    and `PASSWD` like '%${passwd}%'
+		    </if>
+	        <if test ="name != null and name != ''">
+			    and `NAME` like '%${name}%'
+		    </if>
+	        <if test ="logoUrl != null and logoUrl != ''">
+			    and `LOGO_URL` like '%${logoUrl}%'
+		    </if>
+            <if test ="status != null and status > -1">
+				and `STATUS` = #{status}
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="memberPage">
+		<if test="null != start">
+		  limit #{start},#{pageSize}
+		</if>
+	</sql>
+	
+	<sql id="memberField">
+		`ID`, `USERNAME`, `PASSWD`, `NAME`, `LOGO_URL`, `STATUS`, `REGTIME`, `LOGINTIME`
+	</sql>
+	
+	<resultMap id="memberMap" type="member">
+	    	<result property="id" column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	    	<result property="username" column="USERNAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    	<result property="passwd" column="PASSWD" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    	<result property="name" column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    	<result property="logoUrl" column="LOGO_URL" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    	<result property="status" column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	    	<result property="regtime" column="REGTIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	    	<result property="logintime" column="LOGINTIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<insert id="addSaveMember" parameterType="member">
+		insert into `member` (
+           `USERNAME`, 
+           `PASSWD`, 
+           `NAME`, 
+           `LOGO_URL`, 
+           `STATUS`, 
+           `REGTIME`, 
+           `LOGINTIME`
+		) values 
+		(
+            #{username}, 
+            #{passwd}, 
+            #{name}, 
+            #{logoUrl}, 
+            #{status}, 
+            #{regtime}, 
+            #{logintime}
+		)
+		<selectKey keyProperty="id"  resultType="java.lang.Integer">
+			select last_insert_id() as id from `member` limit 1
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteByIds" parameterType="String">
+		delete from `member` ${_parameter}
+	</delete>
+	
+	<update id="editSaveMember" parameterType="member">
+		update `member` set 
+              `USERNAME` = #{username}, 
+              `PASSWD` = #{passwd}, 
+              `NAME` = #{name}, 
+              `LOGO_URL` = #{logoUrl}, 
+              `STATUS` = #{status}, 
+              `REGTIME` = #{regtime}, 
+              `LOGINTIME` = #{logintime}
+        	where ID = #{id}
+	</update>
+	
+	<select id="selectMemberById" parameterType="member" resultMap="memberMap"  >
+		SELECT * FROM `member` where ID = #{id}
+	</select>
+	
+	<select id="getMemberCount" parameterType="member" resultType="Long" >
+		select count(*) from `member`
+		<include refid="memberLikeWhere" />
+	</select>
+	
+	<select id="selectAll" parameterType="member" resultMap="memberMap" >
+		select * from `member`
+	</select>
+	
+	<select id="selectMemberLike" parameterType="member" resultMap="memberMap" >
+		SELECT <include refid="memberField" /> FROM `member`
+	        <include refid="memberLikeWhere" />
+			order by ID desc
+	        <include refid="memberPage" /> 
+	</select>
+</mapper>

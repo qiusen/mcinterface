@@ -34,22 +34,20 @@ public class LaunchServer implements ManagerCenterService.Iface{
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try {
-			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(19999, 10000);
+		try { 
+			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(Property.THRIFT_PORT, Property.THRIFT_CLIENT_TIMEOUT);
 
 			ManagerCenterService.Processor<ManagerCenterService.Iface> processor = new ManagerCenterService.Processor<ManagerCenterService.Iface>(
 					new LaunchServer());
 
 			Factory protFactory = new TBinaryProtocol.Factory(true, true);
-			// TCompactProtocol.Factory protFactory = new
-			// TCompactProtocol.Factory();
 
 			TNonblockingServer.Args as = new TNonblockingServer.Args(
 					serverTransport);
 			as.processor(processor);
 			as.protocolFactory(protFactory);
 			TServer server = new TNonblockingServer(as);
-			System.out.println("Start server on port 19999 ...");
+			System.out.println("Start server on port " + Property.THRIFT_PORT + " ...");
 			server.serve();
 		} catch (TTransportException e) {
 			e.printStackTrace();

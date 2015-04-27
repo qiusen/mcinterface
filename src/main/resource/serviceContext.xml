@@ -4,5 +4,8 @@
 	
 	<!-- 会员 service -->	
 	<bean id="memberService" class="com.dihaitech.tserver.service.impl.MemberServiceImpl"/>
+	
+	<!-- 管理员 service -->	
+	<bean id="managerService" class="com.dihaitech.tserver.service.impl.ManagerServiceImpl"/>
 	  
 </beans>

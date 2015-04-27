@@ -1,4 +1,4 @@
-package com.dihaitech.util;
+package com.dihaitech.tserver.util;
 
 /**
  * 类型工具类

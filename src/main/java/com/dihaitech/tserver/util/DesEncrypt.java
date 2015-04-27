@@ -1,4 +1,4 @@
-package com.dihaitech.util;
+package com.dihaitech.tserver.util;
 
 import java.nio.charset.Charset;
 import java.security.SecureRandom;

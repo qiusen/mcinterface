@@ -1,4 +1,4 @@
-package com.dihaitech.util.json;
+package com.dihaitech.tserver.util.json;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

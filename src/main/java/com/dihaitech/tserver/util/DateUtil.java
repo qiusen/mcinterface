@@ -1,4 +1,4 @@
-package com.dihaitech.util;
+package com.dihaitech.tserver.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

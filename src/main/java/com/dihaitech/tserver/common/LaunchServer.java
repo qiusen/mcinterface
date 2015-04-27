@@ -20,8 +20,9 @@ import com.dihaitech.tserver.managercenter.Manager;
 import com.dihaitech.tserver.managercenter.ManagerCenterService;
 import com.dihaitech.tserver.managercenter.ManagerInfo;
 import com.dihaitech.tserver.managercenter.Member;
+import com.dihaitech.tserver.service.IManagerService;
 import com.dihaitech.tserver.service.IMemberService;
-import com.dihaitech.util.TypeUtil;
+import com.dihaitech.tserver.util.TypeUtil;
 
 /**
  * 启动
@@ -32,10 +33,13 @@ public class LaunchServer implements ManagerCenterService.Iface{
 
 	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
+	IMemberService memberService = (IMemberService) context.getBean("memberService");
+	IManagerService managerService = (IManagerService) context.getBean("managerService");
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try { 
-			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(Property.THRIFT_PORT, Property.THRIFT_CLIENT_TIMEOUT);
+			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(19090, Property.THRIFT_CLIENT_TIMEOUT);
 
 			ManagerCenterService.Processor<ManagerCenterService.Iface> processor = new ManagerCenterService.Processor<ManagerCenterService.Iface>(
 					new LaunchServer());
@@ -49,7 +53,7 @@ public class LaunchServer implements ManagerCenterService.Iface{
 			TServer server = new TNonblockingServer(as);
 			System.out.println("Start server on port " + Property.THRIFT_PORT + " ...");
 			server.serve();
-		} catch (TTransportException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -71,7 +75,25 @@ public class LaunchServer implements ManagerCenterService.Iface{
 	public List<Manager> funCallManager(long arg0, String arg1,
 			Map<String, String> arg2) throws TException {
 		// TODO Auto-generated method stub
-		return null;
+		List<Manager> managerList = null;
+		if(arg1.equalsIgnoreCase("selectAll")){
+			managerList = managerService.selectAll();
+		}
+		
+		if(arg1.equalsIgnoreCase("selectManagerByEmailPassword")){
+			String email = arg2.get("email");
+			String password = arg2.get("password");
+			System.out.println(email + " " + password);
+			Manager manager = new Manager();
+			manager.setEmail(email);
+			manager.setPassword(password);
+			
+			Manager managerVO = managerService.selectManagerByEmailPassword(manager);
+			managerList = new ArrayList<Manager>();
+			managerList.add(managerVO);
+		}
+		
+		return managerList;
 	}
 
 	/* (non-Javadoc)
@@ -91,8 +113,6 @@ public class LaunchServer implements ManagerCenterService.Iface{
 	public List<Member> funCallMember(long arg0, String arg1,
 			Map<String, String> arg2) throws TException {
 		// TODO Auto-generated method stub
-		
-		IMemberService memberService = (IMemberService) context.getBean("memberService");
 		
 		List<Member> memberList = null;
 		if(arg1.equalsIgnoreCase("selectAll")){

@@ -1,0 +1,1 @@
+thrift没有datetime类型，用string代替

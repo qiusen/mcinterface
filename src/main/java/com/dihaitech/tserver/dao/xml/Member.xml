@@ -44,8 +44,8 @@
 	    	<result property="name" column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
 	    	<result property="logoUrl" column="LOGO_URL" javaType="java.lang.String" jdbcType="VARCHAR" />
 	    	<result property="status" column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
-	    	<result property="regtime" column="REGTIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-	    	<result property="logintime" column="LOGINTIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+	    	<result property="regtime" column="REGTIME" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    	<result property="logintime" column="LOGINTIME" javaType="java.lang.String" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<insert id="addSaveMember" parameterType="member">

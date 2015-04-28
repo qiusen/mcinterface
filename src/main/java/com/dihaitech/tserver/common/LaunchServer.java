@@ -129,6 +129,19 @@ public class LaunchServer implements ManagerCenterService.Iface{
 			memberList.add(memberVO);
 		}
 		
+		if(arg1.equalsIgnoreCase("selectMemberByUsernamePasswd")){
+			String username = arg2.get("username");
+			String passwd = arg2.get("passwd");
+			
+			Member member = new Member();
+			member.setUsername(username);
+			member.setPasswd(passwd);
+			
+			Member memberVO = memberService.selectMemberByUsernamePasswd(member);
+			memberList = new ArrayList<Member>();
+			memberList.add(memberVO);
+		}
+		
 		return memberList;
 	}
 	

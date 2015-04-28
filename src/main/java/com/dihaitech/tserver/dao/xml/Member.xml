@@ -107,4 +107,9 @@
 			order by ID desc
 	        <include refid="memberPage" /> 
 	</select>
+	
+	<select id="selectMemberByUsernamePasswd" parameterType="member" resultMap="memberMap" >
+		SELECT <include refid="memberField" /> FROM `member`
+	        where `USERNAME` = #{username} and `PASSWD` = #{passwd}
+	</select>
 </mapper>

@@ -47,4 +47,11 @@ public interface IMemberService {
 	 * @return
 	 */
 	public int deleteByIds(String str);
+
+	/**
+	 * 根据用户名和密码查询
+	 * @param member
+	 * @return
+	 */
+	public Member selectMemberByUsernamePasswd(Member member);
 }

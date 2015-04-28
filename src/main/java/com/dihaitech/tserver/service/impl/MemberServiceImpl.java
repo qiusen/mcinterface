@@ -53,4 +53,14 @@ public class MemberServiceImpl implements IMemberService {
 	public Member selectMemberById(Member member) {
 		return memberDAO.selectMemberById(member);
 	}
+
+
+	/* (non-Javadoc)
+	 * @see com.dihaitech.tserver.service.IMemberService#selectMemberByUsernamePasswd(com.dihaitech.tserver.managercenter.Member)
+	 */
+	@Override
+	public Member selectMemberByUsernamePasswd(Member member) {
+		// TODO Auto-generated method stub
+		return memberDAO.selectMemberByUsernamePasswd(member);
+	}
 }

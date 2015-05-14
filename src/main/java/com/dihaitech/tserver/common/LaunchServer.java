@@ -11,7 +11,6 @@ import org.apache.thrift.server.TNonblockingServer;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TNonblockingServerSocket;
 import org.apache.thrift.transport.TNonblockingServerTransport;
-import org.apache.thrift.transport.TTransportException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -39,7 +38,7 @@ public class LaunchServer implements ManagerCenterService.Iface{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try { 
-			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(19090, Property.THRIFT_CLIENT_TIMEOUT);
+			TNonblockingServerTransport serverTransport = new TNonblockingServerSocket(Property.THRIFT_PORT, Property.THRIFT_CLIENT_TIMEOUT);
 
 			ManagerCenterService.Processor<ManagerCenterService.Iface> processor = new ManagerCenterService.Processor<ManagerCenterService.Iface>(
 					new LaunchServer());

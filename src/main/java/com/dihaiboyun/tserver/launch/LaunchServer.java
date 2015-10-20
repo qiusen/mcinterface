@@ -31,6 +31,8 @@ import com.dihaiboyun.tserver.service.IMemberService;
 public class LaunchServer implements ManagerCenterService.Iface{
 
 	private static ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//	private static ApplicationContext context = new FileSystemXmlApplicationContext("/Users/qiusen/360/workspace/mcinterface/bin/applicationContext.xml");
+	
 	private static IMemberService memberService = (IMemberService) context.getBean("memberService");
 	private static IManagerService managerService = (IManagerService) context.getBean("managerService");
 	

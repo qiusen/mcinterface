@@ -91,7 +91,7 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="property" class="com.dihaiboyun.tserver.common.Property">
+	<bean id="property" class="com.dihaiboyun.tserver.launch.Property">
 		<property name="THRIFT_PORT" value="${thrift.port}"></property>
 		<property name="THRIFT_CLIENT_TIMEOUT" value="${thrift.clientTimeOut}"></property>
 	</bean>

@@ -1,4 +1,4 @@
-package com.dihaitech.tserver.common;
+package com.dihaiboyun.tserver.launch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +14,14 @@ import org.apache.thrift.transport.TNonblockingServerTransport;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.dihaitech.tserver.managercenter.Department;
-import com.dihaitech.tserver.managercenter.Manager;
-import com.dihaitech.tserver.managercenter.ManagerCenterService;
-import com.dihaitech.tserver.managercenter.ManagerInfo;
-import com.dihaitech.tserver.managercenter.Member;
-import com.dihaitech.tserver.service.IManagerService;
-import com.dihaitech.tserver.service.IMemberService;
-import com.dihaitech.tserver.util.TypeUtil;
+import com.dihaiboyun.common.util.TypeUtil;
+import com.dihaiboyun.tserver.managercenter.Department;
+import com.dihaiboyun.tserver.managercenter.Manager;
+import com.dihaiboyun.tserver.managercenter.ManagerCenterService;
+import com.dihaiboyun.tserver.managercenter.ManagerInfo;
+import com.dihaiboyun.tserver.managercenter.Member;
+import com.dihaiboyun.tserver.service.IManagerService;
+import com.dihaiboyun.tserver.service.IMemberService;
 
 /**
  * 启动

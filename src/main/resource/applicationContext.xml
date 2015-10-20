@@ -43,7 +43,7 @@
 	</bean>
 
 	<aop:config proxy-target-class="true">
-		<aop:advisor pointcut="execution(* com.dihaitech.tserver.service.*.*(..))"
+		<aop:advisor pointcut="execution(* com.dihaiboyun.tserver.service.*.*(..))"
 			advice-ref="txAdvice" />
 	</aop:config>
 
@@ -81,17 +81,17 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-		<property name="typeAliasesPackage" value="com.dihaitech.tserver.managercenter" />
-		<property name="mapperLocations" value="classpath*:com/dihaitech/tserver/dao//**/*.xml" />
+		<property name="typeAliasesPackage" value="com.dihaiboyun.tserver.managercenter" />
+		<property name="mapperLocations" value="classpath*:com/dihaiboyun/tserver/dao//**/*.xml" />
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.dihaitech.tserver.dao" />
+		<property name="basePackage" value="com.dihaiboyun.tserver.dao" />
 	</bean>
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="property" class="com.dihaitech.tserver.common.Property">
+	<bean id="property" class="com.dihaiboyun.tserver.common.Property">
 		<property name="THRIFT_PORT" value="${thrift.port}"></property>
 		<property name="THRIFT_CLIENT_TIMEOUT" value="${thrift.clientTimeOut}"></property>
 	</bean>

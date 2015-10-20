@@ -1,8 +1,10 @@
-package com.dihaitech.tserver.service;
+package com.dihaiboyun.tserver.service;
 
 import java.util.List;
 
-import com.dihaitech.tserver.managercenter.Manager;
+import com.dihaiboyun.tserver.managercenter.Manager;
+
+
 
 /**
  * 管理员 业务接口

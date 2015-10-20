@@ -1,8 +1,8 @@
-package com.dihaitech.tserver.dao;
+package com.dihaiboyun.tserver.dao;
 
 import java.util.List;
 
-import com.dihaitech.tserver.managercenter.Manager;
+import com.dihaiboyun.tserver.managercenter.Manager;
 
 
 /**

@@ -12,12 +12,22 @@
   <dependencies>
       	<!-- thrift -->
       	<dependency>
-			<groupId>com.dihaitech.tserver.managercenter</groupId>
+			<groupId>com.dihaiboyun.tserver.managercenter</groupId>
 			<artifactId>TServer</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
 			<!--本地jar的路径,相对或者绝对都可以 -->
 			<systemPath>${basedir}/lib/tserver-1.0.jar</systemPath>
+		</dependency>
+		
+      	<!-- dhby-common -->
+      	<dependency>
+			<groupId>com.dihaiboyun.common</groupId>
+			<artifactId>dhby-common</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<!--本地jar的路径,相对或者绝对都可以 -->
+			<systemPath>${basedir}/lib/dhby-common-1.0.jar</systemPath>
 		</dependency>
 		
 		<dependency>

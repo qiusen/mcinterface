@@ -1,9 +1,8 @@
-package com.dihaitech.tserver.dao;
+package com.dihaiboyun.tserver.dao;
 
 import java.util.List;
 
-
-import com.dihaitech.tserver.managercenter.Member;
+import com.dihaiboyun.tserver.managercenter.Member;
 
 /**
  * 会员 DAO 接口

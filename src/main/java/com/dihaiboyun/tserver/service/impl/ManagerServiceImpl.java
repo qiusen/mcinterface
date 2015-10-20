@@ -1,12 +1,12 @@
-package com.dihaitech.tserver.service.impl;
+package com.dihaiboyun.tserver.service.impl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.dihaitech.tserver.dao.IManagerDAO;
-import com.dihaitech.tserver.managercenter.Manager;
-import com.dihaitech.tserver.service.IManagerService;
+import com.dihaiboyun.tserver.dao.IManagerDAO;
+import com.dihaiboyun.tserver.managercenter.Manager;
+import com.dihaiboyun.tserver.service.IManagerService;
 
 /**
  * 管理员 业务接口 IManagerService 实现类

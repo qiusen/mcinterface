@@ -1,10 +1,10 @@
-package com.dihaitech.tserver.service.impl;
+package com.dihaiboyun.tserver.service.impl;
 
 import java.util.List;
 import javax.annotation.Resource;
-import com.dihaitech.tserver.dao.IMemberDAO;
-import com.dihaitech.tserver.managercenter.Member;
-import com.dihaitech.tserver.service.IMemberService;
+import com.dihaiboyun.tserver.dao.IMemberDAO;
+import com.dihaiboyun.tserver.managercenter.Member;
+import com.dihaiboyun.tserver.service.IMemberService;
 
 /**
  * 会员 业务接口 IMemberService 实现类

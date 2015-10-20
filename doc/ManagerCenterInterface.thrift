@@ -1,5 +1,5 @@
 namespace go tserver.managercenter
-namespace java com.dihaitech.tserver.managercenter
+namespace java com.dihaiboyun.tserver.managercenter
 
 //管理员，使用string处理时间类型
 struct Manager{

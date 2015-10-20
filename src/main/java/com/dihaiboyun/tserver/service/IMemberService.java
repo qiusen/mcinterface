@@ -1,9 +1,9 @@
-package com.dihaitech.tserver.service;
+package com.dihaiboyun.tserver.service;
 
 import java.util.List;
 
 
-import com.dihaitech.tserver.managercenter.Member;
+import com.dihaiboyun.tserver.managercenter.Member;
 
 /**
  * 会员 业务接口
